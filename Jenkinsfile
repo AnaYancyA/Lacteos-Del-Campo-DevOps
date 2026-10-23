@@ -10,12 +10,13 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Comprobando la aplicación Python...'
-                sh 'docker run --rm lacteos-del-campo'
-            }
-        }
+       
+stage('Test') {
+    steps {
+        echo 'Comprobando la sintaxis de Python...'
+        sh 'docker run --rm --entrypoint python lacteos-del-campo -m py_compile DevOpsTask2.py'
+    }
+}
 
         stage('Deploy') {
             steps {
